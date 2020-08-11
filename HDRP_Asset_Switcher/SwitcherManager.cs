@@ -11,7 +11,6 @@ namespace HDRP_Asset_Switcher
 
     public class SwitcherManager : MonoBehaviour
     {
-       // private bool assetSwap;
 
         void Update()
         {
@@ -30,11 +29,13 @@ namespace HDRP_Asset_Switcher
             }
         }
 
-        public void LoadAssets()
+        public static void LoadAssets()
         {
             Main.HDRPAssetBundle = AssetBundle.LoadFromMemory(ExtractResource("HDRP_Asset_Switcher.hdrpassets"));
             Main.HDRPAsset_SDT = Main.HDRPAssetBundle.LoadAllAssets<RenderPipelineAsset>()?.FirstOrDefault();
             Main.HDRPAssetBundle.Unload(false);
+
+            Debug.Log("[HDRP_Switcher] LoadAssets runn");
         }
 
         public static byte[] ExtractResource(string filename)
