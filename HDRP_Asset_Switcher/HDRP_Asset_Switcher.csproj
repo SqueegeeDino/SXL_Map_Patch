@@ -55,6 +55,9 @@
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
@@ -74,9 +77,7 @@
     <Compile Include="SwitcherManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="HDRPAsset_SDT.asset">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="hdrpassets" />
     <None Include="info.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
