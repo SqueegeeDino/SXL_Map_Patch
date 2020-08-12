@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using HarmonyLib;
 
 namespace HDRP_Asset_Switcher
 {
@@ -21,7 +22,19 @@ namespace HDRP_Asset_Switcher
         {
             Debug.Log("[HDRP_Switcher] OnSceneLoaded: " + scene.name);
 
-            LevelInfo info = LevelManager.Instance.currentLevel;
+            AssetBundle bundle = Traverse.Create(LevelManager.Instance).Field("loadedAssetBundle").GetValue() as AssetBundle;
+
+            if (bundle == null)
+            {
+                Debug.Log("[HDRP_Switcher] Level Manager: Built-in level");
+                // built-in level
+            }
+            else
+            {
+                // custom level
+                Debug.Log("[HDRP_Switcher] Level Manager: Built-in level");
+            }
+                    LevelInfo info = LevelManager.Instance.currentLevel;
             if (info.isAssetBundle)
             {
                 Debug.Log("[HDRP_Switcher] Custom Map");
