@@ -37,6 +37,7 @@
     </Reference>
     <Reference Include="0Harmony12">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityModManager\0Harmony12.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Skater XL\SkaterXL_Data\Managed\Assembly-CSharp.dll</HintPath>
@@ -96,7 +97,7 @@ copy /Y "$(TargetDir)Info.json" "C:\Program Files (x86)\Steam\steamapps\common\S
 
 if "$(ConfigurationName)"=="Release" (
 mkdir $(TargetDir)HDRP_Asset_Switcher
-copy /Y "$(TargetDir)HDRP_Asset_Switcher.dll" "$(TargetDir)HDRP_Asset_Switcher\HDRP_Asset_Switcher"
+copy /Y "$(TargetDir)HDRP_Asset_Switcher.dll" "$(TargetDir)HDRP_Asset_Switcher\HDRP_Asset_Switcher.dll"
 copy /Y "$(TargetDir)Info.json" "$(TargetDir)HDRP_Asset_Switcher\Info.json"
 
 powershell Compress-Archive -Path '$(TargetDir)HDRP_Asset_Switcher' -DestinationPath '$(TargetDir)HDRP_Asset_Switcher-0-1-0.zip' -Force
