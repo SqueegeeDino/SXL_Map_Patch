@@ -2,6 +2,8 @@
 using UnityEngine.Rendering;
 using UnityModManagerNet;
 using Object = UnityEngine.Object;
+using HarmonyLib;
+using UnityEngine.SceneManagement;
 
 namespace HDRP_Asset_Switcher
 {
@@ -38,8 +40,22 @@ namespace HDRP_Asset_Switcher
 
                 DefaultHDRPAsset = GraphicsSettings.renderPipelineAsset; // saves off a copy so you can "revert"                                                                              //Your logic to assign that asset over
             }
-
-            return true;
+                /*
+                LevelInfo info = LevelManager.Instance.currentLevel;
+                if (info.isAssetBundle)
+                {
+                    Debug.Log("[HDRP_Switcher] (Load) Custom Map");
+                    GraphicsSettings.renderPipelineAsset = Main.HDRPAsset_SDT;
+                    Debug.Log("[HDRP_Switcher] (Load) Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
+                }
+                else
+                {
+                    Debug.Log("[HDRP_Switcher] (Load) Official Map");
+                    GraphicsSettings.renderPipelineAsset = Main.DefaultHDRPAsset;
+                    Debug.Log("[HDRP_Switcher] (Load) Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
+                }
+                */
+                return true;
         }
 
         private static bool OnToggle(UnityModManager.ModEntry mod_entry, bool value)

@@ -32,9 +32,10 @@ namespace HDRP_Asset_Switcher
             else
             {
                 // custom level
-                Debug.Log("[HDRP_Switcher] Level Manager: Built-in level");
+                Debug.Log("[HDRP_Switcher] Level Manager: Custom Level");
             }
-                    LevelInfo info = LevelManager.Instance.currentLevel;
+            /*
+            LevelInfo info = LevelManager.Instance.currentLevel;
             if (info.isAssetBundle)
             {
                 Debug.Log("[HDRP_Switcher] Custom Map");
@@ -47,6 +48,7 @@ namespace HDRP_Asset_Switcher
                 GraphicsSettings.renderPipelineAsset = Main.DefaultHDRPAsset;
                 Debug.Log("[HDRP_Switcher] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
             }
+            */
         }
 
         public static void LoadAssets()
