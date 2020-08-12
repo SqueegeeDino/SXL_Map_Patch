@@ -35,7 +35,7 @@ namespace HDRP_Asset_Switcher
             Main.HDRPAsset_SDT = Main.HDRPAssetBundle.LoadAllAssets<RenderPipelineAsset>()?.FirstOrDefault();
             Main.HDRPAssetBundle.Unload(false);
 
-            Debug.Log("[HDRP_Switcher] LoadAssets runn");
+            Debug.Log("[HDRP_Switcher] LoadAssets run");
         }
 
         public static byte[] ExtractResource(string filename)
