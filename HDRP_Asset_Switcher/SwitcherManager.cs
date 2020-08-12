@@ -5,27 +5,34 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 namespace HDRP_Asset_Switcher
 {
-
     public class SwitcherManager : MonoBehaviour
     {
-
-        void Update()
+        void OnEnable()
         {
-            if (Input.GetKeyDown(KeyCode.F10))
+            Debug.Log("[HDRP_Switcher] OnEnable called");
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            Debug.Log("[HDRP_Switcher] OnSceneLoaded: " + scene.name);
+
+            LevelInfo info = LevelManager.Instance.currentLevel;
+            if (info.isAssetBundle)
             {
-                Debug.Log("[HDRP_Switcher] F10 key was pressed.");
-                {
-                    GraphicsSettings.renderPipelineAsset = Main.HDRPAsset_SDT;
-                    Debug.Log("[HDRP_Switcher] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.F11))
-            {
+                Debug.Log("[HDRP_Switcher] Custom Map");
+                GraphicsSettings.renderPipelineAsset = Main.HDRPAsset_SDT;
                 Debug.Log("[HDRP_Switcher] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
-                Debug.Log("[HDRP_Switcher] F11 Key was pressed");
+            }
+            else
+            {
+                Debug.Log("[HDRP_Switcher] Official Map");
+                GraphicsSettings.renderPipelineAsset = Main.DefaultHDRPAsset;
+                Debug.Log("[HDRP_Switcher] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
             }
         }
 
@@ -37,6 +44,27 @@ namespace HDRP_Asset_Switcher
 
             Debug.Log("[HDRP_Switcher] LoadAssets run");
         }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.F10))
+            {
+                Debug.Log("[HDRP_Switcher] F10 key pressed.");
+                {
+                    GraphicsSettings.renderPipelineAsset = Main.HDRPAsset_SDT;
+                    Debug.Log("[HDRP_Switcher] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.F11))
+            {
+                Debug.Log("[HDRP_Switcher] F11 Key pressed");
+                {
+                    GraphicsSettings.renderPipelineAsset = Main.DefaultHDRPAsset;
+                    Debug.Log("[HDRP_Switcher] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
+                }
+            }
+        }
+
 
         public static byte[] ExtractResource(string filename)
         {

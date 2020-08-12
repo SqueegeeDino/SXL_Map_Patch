@@ -11,19 +11,15 @@ namespace HDRP_Asset_Switcher
         public static RenderPipelineAsset HDRPAsset_SDT { get; set; }
         public static RenderPipelineAsset DefaultHDRPAsset { get; set; }
 
-        void Awake() // As soon as the mod loads, back up the default HDRP asset
+        void OnEnable() // As soon as the mod loads, back up the default HDRP asset
         {
+            Debug.Log("[HDRP_Switcher] OnEnable Main");
             if (HDRPAsset_SDT != null)
             {
                 Debug.Log("[HDRP_Switcher] Storing Default HDRP Asset");
 
                 DefaultHDRPAsset = GraphicsSettings.renderPipelineAsset; // saves off a copy so you can "revert"                                                                              //Your logic to assign that asset over
             }
-        }
-
-        void Start()
-        {
-
         }
 
         // Buncha stolen code from Bill-O-Rumble
@@ -35,6 +31,13 @@ namespace HDRP_Asset_Switcher
             SwitcherManager.LoadAssets();
 
             Debug.Log("[HDRP_Switcher] Assets Loaded");
+
+            if (HDRPAsset_SDT != null)
+            {
+                Debug.Log("[HDRP_Switcher] Storing Default HDRP Asset");
+
+                DefaultHDRPAsset = GraphicsSettings.renderPipelineAsset; // saves off a copy so you can "revert"                                                                              //Your logic to assign that asset over
+            }
 
             return true;
         }
