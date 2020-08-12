@@ -12,12 +12,13 @@ namespace HDRP_Asset_Switcher
 {
     public class SwitcherManager : MonoBehaviour
     {
+        /*
         void OnEnable()
         {
             Debug.Log("[HDRP_Switcher] OnEnable called");
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
-
+        
         void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             Debug.Log("[HDRP_Switcher] OnSceneLoaded: " + scene.name);
@@ -34,7 +35,7 @@ namespace HDRP_Asset_Switcher
                 // custom level
                 Debug.Log("[HDRP_Switcher] Level Manager: Custom Level");
             }
-            /*
+            
             LevelInfo info = LevelManager.Instance.currentLevel;
             if (info.isAssetBundle)
             {
@@ -48,9 +49,9 @@ namespace HDRP_Asset_Switcher
                 GraphicsSettings.renderPipelineAsset = Main.DefaultHDRPAsset;
                 Debug.Log("[HDRP_Switcher] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
             }
-            */
+            
         }
-
+    */
         public static void LoadAssets()
         {
             Main.HDRPAssetBundle = AssetBundle.LoadFromMemory(ExtractResource("HDRP_Asset_Switcher.hdrpassets"));

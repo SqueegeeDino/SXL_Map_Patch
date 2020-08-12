@@ -2,7 +2,7 @@
   "Id": "HDRP_Switcher",
   "DisplayName": "HDRP Switcher",
   "Author": "SDT",
-  "Version": "0.2.0",
+  "Version": "0.2.1",
   "ManagerVersion": "0.22.5.0",
   "Requirements": [],
   "AssemblyName": "HDRP_Asset_Switcher.dll",
