@@ -63,9 +63,9 @@ namespace HDRP_Asset_Switcher
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.F10))
+            if (Input.GetKeyDown(KeyCode.F9))
             {
-                Debug.Log("[HDRP_Switcher] F10 key pressed.");
+                Debug.Log("[HDRP_Switcher] F9 key pressed.");
                 {
                     GraphicsSettings.renderPipelineAsset = Main.HDRPAsset_SDT;
                     Debug.Log("[HDRP_Switcher] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
