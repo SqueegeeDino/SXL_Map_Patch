@@ -95,6 +95,9 @@
     <None Include="info.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="repository.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -103,14 +106,16 @@ del /Q /F "C:\Program Files (x86)\Steam\steamapps\common\Skater XL\Mods\MapPatch
 copy /Y "$(TargetDir)MapPatch.dll" "C:\Program Files (x86)\Steam\steamapps\common\Skater XL\Mods\MapPatch\MapPatch.dll"
 copy /Y "$(TargetDir)MapPatch.pdb" "C:\Program Files (x86)\Steam\steamapps\common\Skater XL\Mods\MapPatch\MapPatch.pdb"
 copy /Y "$(TargetDir)Info.json" "C:\Program Files (x86)\Steam\steamapps\common\Skater XL\Mods\MapPatch\Info.json"
+copy /Y "$(TargetDir)Repository.json" "C:\Program Files (x86)\Steam\steamapps\common\Skater XL\Mods\MapPatch\Repository.json"
 )
 
 if "$(ConfigurationName)"=="Release" (
 mkdir $(TargetDir)MapPatch
 copy /Y "$(TargetDir)MapPatch.dll" "$(TargetDir)MapPatch\MapPatch.dll"
 copy /Y "$(TargetDir)Info.json" "$(TargetDir)MapPatch\Info.json"
+copy /Y "$(TargetDir)Repository.json" "$ (TargetDir)MapPatch\Repository.json"
 
-powershell Compress-Archive -Path '$(TargetDir)MapPatch' -DestinationPath '$(TargetDir)MapPatch-0-1-0.zip' -Force
+powershell Compress-Archive -Path '$(TargetDir)MapPatch' -DestinationPath '$(TargetDir)MapPatch-0-3-0.zip' -Force
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>
