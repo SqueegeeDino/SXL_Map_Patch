@@ -7,8 +7,8 @@
     <ProjectGuid>{B2FCC4DA-72F5-4150-A02E-01B89809868C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HDRP_Asset_Switcher</RootNamespace>
-    <AssemblyName>HDRP_Asset_Switcher</AssemblyName>
+    <RootNamespace>MapPatch</RootNamespace>
+    <AssemblyName>MapPatch</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -57,9 +57,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="Unity.RenderPipelines.HighDefinition.Config.Runtime">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Skater XL\SkaterXL_Data\Managed\Unity.RenderPipelines.HighDefinition.Config.Runtime.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Skater XL\SkaterXL_Data\Managed\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.dll</HintPath>
@@ -67,6 +69,7 @@
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Skater XL\SkaterXL_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
@@ -96,18 +99,18 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if "$(ConfigurationName)"=="Debug" ( 
-del /Q /F "C:\Program Files (x86)\Steam\steamapps\common\Skater XL\Mods\HDRP_Asset_Switcher\"
-copy /Y "$(TargetDir)HDRP_Asset_Switcher.dll" "C:\Program Files (x86)\Steam\steamapps\common\Skater XL\Mods\HDRP_Asset_Switcher\HDRP_Asset_Switcher.dll"
-copy /Y "$(TargetDir)HDRP_Asset_Switcher.pdb" "C:\Program Files (x86)\Steam\steamapps\common\Skater XL\Mods\HDRP_Asset_Switcher\HDRP_Asset_Switcher.pdb"
-copy /Y "$(TargetDir)Info.json" "C:\Program Files (x86)\Steam\steamapps\common\Skater XL\Mods\HDRP_Asset_Switcher\Info.json"
+del /Q /F "C:\Program Files (x86)\Steam\steamapps\common\Skater XL\Mods\MapPatch\"
+copy /Y "$(TargetDir)MapPatch.dll" "C:\Program Files (x86)\Steam\steamapps\common\Skater XL\Mods\MapPatch\MapPatch.dll"
+copy /Y "$(TargetDir)MapPatch.pdb" "C:\Program Files (x86)\Steam\steamapps\common\Skater XL\Mods\MapPatch\MapPatch.pdb"
+copy /Y "$(TargetDir)Info.json" "C:\Program Files (x86)\Steam\steamapps\common\Skater XL\Mods\MapPatch\Info.json"
 )
 
 if "$(ConfigurationName)"=="Release" (
-mkdir $(TargetDir)HDRP_Asset_Switcher
-copy /Y "$(TargetDir)HDRP_Asset_Switcher.dll" "$(TargetDir)HDRP_Asset_Switcher\HDRP_Asset_Switcher.dll"
-copy /Y "$(TargetDir)Info.json" "$(TargetDir)HDRP_Asset_Switcher\Info.json"
+mkdir $(TargetDir)MapPatch
+copy /Y "$(TargetDir)MapPatch.dll" "$(TargetDir)MapPatch\MapPatch.dll"
+copy /Y "$(TargetDir)Info.json" "$(TargetDir)MapPatch\Info.json"
 
-powershell Compress-Archive -Path '$(TargetDir)HDRP_Asset_Switcher' -DestinationPath '$(TargetDir)HDRP_Asset_Switcher-0-1-0.zip' -Force
+powershell Compress-Archive -Path '$(TargetDir)MapPatch' -DestinationPath '$(TargetDir)MapPatch-0-1-0.zip' -Force
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>

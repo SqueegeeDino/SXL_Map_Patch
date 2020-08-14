@@ -6,7 +6,7 @@ using HarmonyLib;
 using UnityEngine.Rendering.HighDefinition;
 using System.Reflection;
 
-namespace HDRP_Asset_Switcher
+namespace MapPatch
 {
     public class Main
     {
@@ -18,10 +18,10 @@ namespace HDRP_Asset_Switcher
 
         void OnEnable() // As soon as the mod loads, back up the default HDRP asset
         {
-            Debug.Log("[HDRP_Switcher] OnEnable Main");
+            Debug.Log("[MapPatch] OnEnable Main");
             if (HDRPAsset_SDT != null)
             {
-                Debug.Log("[HDRP_Switcher] Storing Default HDRP Asset");
+                Debug.Log("[MapPatch] Storing Default HDRP Asset");
 
                 DefaultHDRPAsset = GraphicsSettings.renderPipelineAsset; // saves off a copy so you can "revert"                                                                              //Your logic to assign that asset over
             }
@@ -33,9 +33,9 @@ namespace HDRP_Asset_Switcher
         {
             mod_entry.OnToggle = OnToggle;
 
-            SwitcherManager.LoadAssets();
+            MapPatchManager.LoadAssets();
 
-            Debug.Log("[HDRP_Switcher] Assets Loaded");
+            Debug.Log("[MapPatch] Assets Loaded");
 
             HDRenderPipelineAsset hdrp = GraphicsSettings.renderPipelineAsset as HDRenderPipelineAsset;
             RenderPipelineSettings settings = hdrp.currentPlatformRenderPipelineSettings;
@@ -43,7 +43,7 @@ namespace HDRP_Asset_Switcher
 
             if (HDRPAsset_SDT != null)
             {
-                Debug.Log("[HDRP_Switcher] Storing Default HDRP Asset");
+                Debug.Log("[MapPatch] Storing Default HDRP Asset");
 
                 DefaultHDRPAsset = GraphicsSettings.renderPipelineAsset; // saves off a copy so you can "revert"                                                                              //Your logic to assign that asset over
             }
@@ -69,7 +69,7 @@ namespace HDRP_Asset_Switcher
         {
             if (value)
             {
-                var go = new GameObject("SwitcherManager", typeof(SwitcherManager));
+                var go = new GameObject("MapPatchManager", typeof(MapPatchManager));
 
                 Harmony = new Harmony(mod_entry.Info.Id);
                 Harmony.PatchAll(Assembly.GetExecutingAssembly());
@@ -79,11 +79,11 @@ namespace HDRP_Asset_Switcher
             else
             {
 
-                Debug.Log("[HDRP_Switcher] OnToggle Value False");
+                Debug.Log("Map] OnToggle Value False");
 
                 Harmony.UnpatchAll(Harmony.Id);
 
-                var rm = Object.FindObjectOfType<SwitcherManager>();
+                var rm = Object.FindObjectOfType<MapPatchManager>();
                 if (rm != null)
                     Object.Destroy(rm.gameObject);
             }

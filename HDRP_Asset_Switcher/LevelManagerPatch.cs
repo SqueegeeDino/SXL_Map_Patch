@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace HDRP_Asset_Switcher
+namespace MapPatch
 {
     /*
     public class LevelManagerPatch

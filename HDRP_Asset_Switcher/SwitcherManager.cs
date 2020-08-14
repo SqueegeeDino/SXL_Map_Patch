@@ -8,9 +8,9 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using HarmonyLib;
 
-namespace HDRP_Asset_Switcher
+namespace MapPatch
 {
-    public class SwitcherManager : MonoBehaviour
+    public class MapPatchManager : MonoBehaviour
     {
         /*
         void OnEnable()
@@ -54,29 +54,29 @@ namespace HDRP_Asset_Switcher
     */
         public static void LoadAssets()
         {
-            Main.HDRPAssetBundle = AssetBundle.LoadFromMemory(ExtractResource("HDRP_Asset_Switcher.hdrpassets"));
+            Main.HDRPAssetBundle = AssetBundle.LoadFromMemory(ExtractResource("MapPatch.hdrpassets"));
             Main.HDRPAsset_SDT = Main.HDRPAssetBundle.LoadAllAssets<RenderPipelineAsset>()?.FirstOrDefault();
             Main.HDRPAssetBundle.Unload(false);
 
-            Debug.Log("[HDRP_Switcher] LoadAssets run");
+            Debug.Log("[MapPatch] LoadAssets run");
         }
 
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.F9))
             {
-                Debug.Log("[HDRP_Switcher] F9 key pressed.");
+                Debug.Log("[MapPatch] F9 key pressed.");
                 {
                     GraphicsSettings.renderPipelineAsset = Main.HDRPAsset_SDT;
-                    Debug.Log("[HDRP_Switcher] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
+                    Debug.Log("[MapPatch] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
                 }
             }
             if (Input.GetKeyDown(KeyCode.F11))
             {
-                Debug.Log("[HDRP_Switcher] F11 Key pressed");
+                Debug.Log("[MapPatch] F11 Key pressed");
                 {
                     GraphicsSettings.renderPipelineAsset = Main.DefaultHDRPAsset;
-                    Debug.Log("[HDRP_Switcher] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
+                    Debug.Log("[MapPatch] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
                 }
             }
         }

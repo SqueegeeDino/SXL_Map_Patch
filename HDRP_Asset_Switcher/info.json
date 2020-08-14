@@ -1,12 +1,12 @@
 {
-  "Id": "HDRP_Asset_Switcher",
+  "Id": "MapPatch",
   "DisplayName": "Map Patch",
   "Author": "SDT",
-  "Version": "0.2.2",
+  "Version": "0.3.0",
   "ManagerVersion": "0.22.5.0",
   "Requirements": [],
-  "AssemblyName": "HDRP_Asset_Switcher.dll",
-  "EntryMethod": "HDRP_Asset_Switcher.Main.Load",
+  "AssemblyName": "MapPatch.dll",
+  "EntryMethod": "MapPatch.Main.Load",
   "HomePage": "",
   "Repository": ""
   }

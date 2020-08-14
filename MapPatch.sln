@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1145
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDRP_Asset_Switcher", "HDRP_Asset_Switcher\HDRP_Asset_Switcher.csproj", "{B2FCC4DA-72F5-4150-A02E-01B89809868C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapPatch", "HDRP_Asset_Switcher\MapPatch.csproj", "{B2FCC4DA-72F5-4150-A02E-01B89809868C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
