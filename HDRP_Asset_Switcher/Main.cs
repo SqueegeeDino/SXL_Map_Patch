@@ -4,6 +4,8 @@ using UnityModManagerNet;
 using Object = UnityEngine.Object;
 using HarmonyLib;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 namespace HDRP_Asset_Switcher
 {
@@ -33,6 +35,10 @@ namespace HDRP_Asset_Switcher
             SwitcherManager.LoadAssets();
 
             Debug.Log("[HDRP_Switcher] Assets Loaded");
+
+            HDRenderPipelineAsset hdrp = GraphicsSettings.renderPipelineAsset as HDRenderPipelineAsset;
+            RenderPipelineSettings settings = hdrp.currentPlatformRenderPipelineSettings;
+            settings.supportDecals = true;
 
             if (HDRPAsset_SDT != null)
             {

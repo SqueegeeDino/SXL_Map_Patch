@@ -1,8 +1,8 @@
 {
-  "Id": "HDRP_Switcher",
-  "DisplayName": "HDRP Switcher",
+  "Id": "Map-Patch",
+  "DisplayName": "Map Patch",
   "Author": "SDT",
-  "Version": "0.2.1",
+  "Version": "0.2.2",
   "ManagerVersion": "0.22.5.0",
   "Requirements": [],
   "AssemblyName": "HDRP_Asset_Switcher.dll",
