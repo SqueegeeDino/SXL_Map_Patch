@@ -19,3 +19,5 @@ Bill for his open source code I lifted from Bill-O-Rumble
 Mcbtay for an insane amount of help, basically writing half the mod, and ongoing support of the mods development
 
 ### Releases
+
+[All Releases](https://github.com/SqueegeeDino/SXL_Map_Patch/releases)
