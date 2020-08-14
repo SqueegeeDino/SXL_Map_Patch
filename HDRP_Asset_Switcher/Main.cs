@@ -3,9 +3,8 @@ using UnityEngine.Rendering;
 using UnityModManagerNet;
 using Object = UnityEngine.Object;
 using HarmonyLib;
-using UnityEngine.SceneManagement;
-using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
+using System.Reflection;
 
 namespace HDRP_Asset_Switcher
 {
@@ -14,6 +13,8 @@ namespace HDRP_Asset_Switcher
         public static AssetBundle HDRPAssetBundle { get; set; }
         public static RenderPipelineAsset HDRPAsset_SDT { get; set; }
         public static RenderPipelineAsset DefaultHDRPAsset { get; set; }
+
+        private static Harmony Harmony { get; set; }
 
         void OnEnable() // As soon as the mod loads, back up the default HDRP asset
         {
@@ -70,6 +71,8 @@ namespace HDRP_Asset_Switcher
             {
                 var go = new GameObject("SwitcherManager", typeof(SwitcherManager));
 
+                Harmony = new Harmony(mod_entry.Info.Id);
+                Harmony.PatchAll(Assembly.GetExecutingAssembly());
 
                 Object.DontDestroyOnLoad(go);
             }
@@ -77,6 +80,8 @@ namespace HDRP_Asset_Switcher
             {
 
                 Debug.Log("[HDRP_Switcher] OnToggle Value False");
+
+                Harmony.UnpatchAll(Harmony.Id);
 
                 var rm = Object.FindObjectOfType<SwitcherManager>();
                 if (rm != null)

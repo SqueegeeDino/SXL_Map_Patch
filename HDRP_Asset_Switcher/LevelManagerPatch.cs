@@ -7,6 +7,7 @@ using System.Reflection;
 
 namespace HDRP_Asset_Switcher
 {
+    /*
     public class LevelManagerPatch
     {
         [HarmonyPatch(typeof(LevelManager), nameof(LevelManager.LoadLevelScene))]
@@ -26,10 +27,12 @@ namespace HDRP_Asset_Switcher
             }
         }
     }
-        /// <summary>
-        /// Some levels have custom script assemblies that go with them.  Find if an assembly exists that matches the maps file name, and load it if soo.
-        /// </summary>
-        [HarmonyPatch(typeof(LevelManager), nameof(LevelManager.LoadLevelScene))]
+    */
+    /// <summary>
+    /// Some levels have custom script assemblies that go with them.  Find if an assembly exists that matches the maps file name, and load it if soo.
+    /// </summary>
+
+    [HarmonyPatch(typeof(LevelManager), nameof(LevelManager.LoadLevelScene))]
     public static class LoadLevelScenePatch
     {
         static void Prefix(LevelInfo level)
