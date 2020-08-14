@@ -7,6 +7,6 @@
   "Requirements": [],
   "AssemblyName": "MapPatch.dll",
   "EntryMethod": "MapPatch.Main.Load",
-  "HomePage": "",
-  "Repository": ""
+  "HomePage": "https://github.com/SqueegeeDino/SXL_Map_Patch",
+  "Repository": "https://raw.githubusercontent.com/SqueegeeDino/SXL_Map_Patch/master/HDRP_Asset_Switcher/repository.json"
   }
