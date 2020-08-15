@@ -88,13 +88,13 @@
     <Compile Include="LevelManagerPatch.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SwitcherManager.cs" />
+    <Compile Include="MapPatchManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="hdrpassets" />
     <None Include="info.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <EmbeddedResource Include="mappatch_bundle" />
     <None Include="repository.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

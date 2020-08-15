@@ -10,7 +10,7 @@ namespace MapPatch
 {
     public class Main
     {
-        public static AssetBundle HDRPAssetBundle { get; set; }
+        public static AssetBundle MapPatch_Bundle { get; set; }
         public static RenderPipelineAsset HDRPAsset_SDT { get; set; }
         public static RenderPipelineAsset DefaultHDRPAsset { get; set; }
 
@@ -23,7 +23,9 @@ namespace MapPatch
             {
                 Debug.Log("[MapPatch] Storing Default HDRP Asset");
 
-                DefaultHDRPAsset = GraphicsSettings.renderPipelineAsset; // saves off a copy so you can "revert"                                                                              //Your logic to assign that asset over
+                DefaultHDRPAsset = GraphicsSettings.renderPipelineAsset; // saves off a copy so you can "revert"     
+                
+                GameObject newMenuObject = GameObject.Instantiate(MapPatch_Bundle.LoadAsset<GameObject>("Assets/Prefabs/Menu.prefab"));
             }
         }
 
@@ -47,21 +49,6 @@ namespace MapPatch
 
                 DefaultHDRPAsset = GraphicsSettings.renderPipelineAsset; // saves off a copy so you can "revert"                                                                              //Your logic to assign that asset over
             }
-                /*
-                LevelInfo info = LevelManager.Instance.currentLevel;
-                if (info.isAssetBundle)
-                {
-                    Debug.Log("[HDRP_Switcher] (Load) Custom Map");
-                    GraphicsSettings.renderPipelineAsset = Main.HDRPAsset_SDT;
-                    Debug.Log("[HDRP_Switcher] (Load) Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
-                }
-                else
-                {
-                    Debug.Log("[HDRP_Switcher] (Load) Official Map");
-                    GraphicsSettings.renderPipelineAsset = Main.DefaultHDRPAsset;
-                    Debug.Log("[HDRP_Switcher] (Load) Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
-                }
-                */
                 return true;
         }
 
