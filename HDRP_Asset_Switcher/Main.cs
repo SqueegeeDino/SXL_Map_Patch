@@ -14,6 +14,8 @@ namespace MapPatch
         public static RenderPipelineAsset HDRPAsset_SDT { get; set; }
         public static RenderPipelineAsset DefaultHDRPAsset { get; set; }
 
+        public static GameObject MapPatch_UI { get; set; }
+
         private static Harmony Harmony { get; set; }
 
         void OnEnable() // As soon as the mod loads, back up the default HDRP asset
@@ -24,8 +26,6 @@ namespace MapPatch
                 Debug.Log("[MapPatch] Storing Default HDRP Asset");
 
                 DefaultHDRPAsset = GraphicsSettings.renderPipelineAsset; // saves off a copy so you can "revert"     
-                
-                GameObject newMenuObject = GameObject.Instantiate(MapPatch_Bundle.LoadAsset<GameObject>("Assets/Prefabs/Menu.prefab"));
             }
         }
 
@@ -37,7 +37,9 @@ namespace MapPatch
 
             MapPatchManager.LoadAssets();
 
-            Debug.Log("[MapPatch] Assets Loaded");
+            UIManager.LoadAssets_UI();
+
+            Debug.Log("[MapPatch] (Main) Assets Loaded");
 
             HDRenderPipelineAsset hdrp = GraphicsSettings.renderPipelineAsset as HDRenderPipelineAsset;
             RenderPipelineSettings settings = hdrp.currentPlatformRenderPipelineSettings;
@@ -56,7 +58,7 @@ namespace MapPatch
         {
             if (value)
             {
-                var go = new GameObject("MapPatchManager", typeof(MapPatchManager));
+                var go = new GameObject("MapPatchManager_Object", typeof(MapPatchManager));
 
                 Harmony = new Harmony(mod_entry.Info.Id);
                 Harmony.PatchAll(Assembly.GetExecutingAssembly());
