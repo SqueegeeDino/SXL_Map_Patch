@@ -14,12 +14,7 @@ namespace MapPatch
     {
         public static void LoadAssets_UI()
         {
-            Main.MapPatch_Bundle = AssetBundle.LoadFromMemory(ExtractResource("MapPatch.mappatch_bundle"));
-            Main.MapPatch_UI = Main.MapPatch_Bundle.LoadAllAssets<GameObject>()?.FirstOrDefault();
-            Main.MapPatch_Bundle.Unload(false);
 
-            UnityModManager.Logger.Log("[Map Patch] LoadAssets_ui run");
-            Debug.Log("[MapPatch] LoadAssets_ui run");
         }
 
         void Update()
@@ -28,7 +23,7 @@ namespace MapPatch
             {
                 Debug.Log("[MapPatch] D key pressed.");
                 {
-                    GameObject newMenuObject = GameObject.Instantiate(Main.MapPatch_UI);
+                    
                 }
             }
             if (Input.GetKeyDown(KeyCode.S))
@@ -40,16 +35,6 @@ namespace MapPatch
             }
         }
 
-        public static byte[] ExtractResource(string filename)
-        {
-            Assembly a = Assembly.GetExecutingAssembly();
-            using (var resFilestream = a.GetManifestResourceStream(filename))
-            {
-                if (resFilestream == null) return null;
-                byte[] ba = new byte[resFilestream.Length];
-                resFilestream.Read(ba, 0, ba.Length);
-                return ba;
-            }
-        }
+
     }
 }

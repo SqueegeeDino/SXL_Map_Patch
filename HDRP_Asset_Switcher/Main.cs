@@ -5,6 +5,7 @@ using Object = UnityEngine.Object;
 using HarmonyLib;
 using UnityEngine.Rendering.HighDefinition;
 using System.Reflection;
+using System.Linq;
 
 namespace MapPatch
 {
@@ -25,8 +26,13 @@ namespace MapPatch
             {
                 Debug.Log("[MapPatch] Storing Default HDRP Asset");
 
-                DefaultHDRPAsset = GraphicsSettings.renderPipelineAsset; // saves off a copy so you can "revert"     
+                DefaultHDRPAsset = GraphicsSettings.renderPipelineAsset; // saves off a copy so you can "revert"  
             }
+        }
+
+        void Start()
+        {
+
         }
 
         // Buncha stolen code from Bill-O-Rumble
@@ -60,6 +66,22 @@ namespace MapPatch
             {
                 var go = new GameObject("MapPatchManager_Object", typeof(MapPatchManager));
 
+                Main.MapPatch_Bundle = AssetBundle.LoadFromMemory(ExtractResource("MapPatch.mappatch_bundle"));
+                Main.MapPatch_UI = Main.MapPatch_Bundle.LoadAllAssets<GameObject>()?.FirstOrDefault();
+                Main.MapPatch_Bundle.Unload(false);
+
+                UnityModManager.Logger.Log("[Map Patch] (Main) LoadAssets_ui run");
+                Debug.Log("[MapPatch] (Main) LoadAssets_ui run");
+
+                GameObject newMenuObject = GameObject.Instantiate(Main.MapPatch_UI);
+
+                UnityModManager.Logger.Log("[MapPatch] (Main) UI Object Created");
+
+                MapPatch_UI.AddComponent<MapPatchManager>();
+                MapPatch_UI.AddComponent<UIManager>();
+
+                UnityModManager.Logger.Log("[MapPatch] (Main) Components attached");
+
                 Harmony = new Harmony(mod_entry.Info.Id);
                 Harmony.PatchAll(Assembly.GetExecutingAssembly());
 
@@ -77,6 +99,32 @@ namespace MapPatch
                     Object.Destroy(rm.gameObject);
             }
             return true;
+        }
+
+        public void ChildFinder()
+        {
+            //Finds and assigns the child of the player named "Gun".
+            MapPatch_UI.transform.Find("MapPatch_EventSystem").gameObject;
+
+            //If the child was found.
+            if (MapPatch_UI  != null)
+            {
+                //Find the child named "ammo" of the gameobject "magazine" (magazine is a child of "gun").
+                ammo = gun.transform.Find("magazine/ammo");
+            }
+            else Debug.Log("No child with the name 'Gun' attached to the player");
+        }
+
+        public static byte[] ExtractResource(string filename)
+        {
+            Assembly a = Assembly.GetExecutingAssembly();
+            using (var resFilestream = a.GetManifestResourceStream(filename))
+            {
+                if (resFilestream == null) return null;
+                byte[] ba = new byte[resFilestream.Length];
+                resFilestream.Read(ba, 0, ba.Length);
+                return ba;
+            }
         }
     }
 }
