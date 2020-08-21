@@ -52,6 +52,8 @@ namespace MapPatch
             
         }
     */
+        public bool CustomHDRP = false;
+
         public static void LoadAssets()
         {
             Main.MapPatch_Bundle = AssetBundle.LoadFromMemory(ExtractResource("MapPatch.mappatch_bundle"));
@@ -66,18 +68,18 @@ namespace MapPatch
         {
             if (Input.GetKeyDown(KeyCode.F9))
             {
-                Debug.Log("[MapPatch] F9 key pressed.");
+                UnityModManager.Logger.Log("[MapPatch] F9 key pressed.");
+                if (CustomHDRP == false)
                 {
                     GraphicsSettings.renderPipelineAsset = Main.HDRPAsset_SDT;
-                    Debug.Log("[MapPatch] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
+                    UnityModManager.Logger.Log("[MapPatch] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
+                    CustomHDRP = true;
                 }
-            }
-            if (Input.GetKeyDown(KeyCode.F11))
-            {
-                Debug.Log("[MapPatch] F11 Key pressed");
+                else
                 {
                     GraphicsSettings.renderPipelineAsset = Main.DefaultHDRPAsset;
-                    Debug.Log("[MapPatch] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
+                    UnityModManager.Logger.Log("[MapPatch] Active render pipeline asset is: " + GraphicsSettings.renderPipelineAsset.name);
+                    CustomHDRP = false;
                 }
             }
         }

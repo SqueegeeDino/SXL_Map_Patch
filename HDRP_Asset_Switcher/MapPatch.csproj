@@ -115,7 +115,7 @@ copy /Y "$(TargetDir)MapPatch.dll" "$(TargetDir)MapPatch\MapPatch.dll"
 copy /Y "$(TargetDir)Info.json" "$(TargetDir)MapPatch\Info.json"
 copy /Y "$(TargetDir)Repository.json" "$ (TargetDir)MapPatch\Repository.json"
 
-powershell Compress-Archive -Path '$(TargetDir)MapPatch' -DestinationPath '$(TargetDir)MapPatch-0-3-1.zip' -Force
+powershell Compress-Archive -Path '$(TargetDir)MapPatch' -DestinationPath '$(TargetDir)MapPatch-0-3-3.zip' -Force
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>
