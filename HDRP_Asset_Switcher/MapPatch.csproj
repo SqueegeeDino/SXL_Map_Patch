@@ -89,7 +89,6 @@
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MapPatchManager.cs" />
-    <Compile Include="UIManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="info.json">
