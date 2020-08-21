@@ -66,9 +66,9 @@ namespace MapPatch
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.F9))
+            if (Input.GetKeyDown(KeyCode.F11))
             {
-                UnityModManager.Logger.Log("[MapPatch] F9 key pressed.");
+                UnityModManager.Logger.Log("[MapPatch] F11 key pressed.");
                 if (CustomHDRP == false)
                 {
                     GraphicsSettings.renderPipelineAsset = Main.HDRPAsset_SDT;
